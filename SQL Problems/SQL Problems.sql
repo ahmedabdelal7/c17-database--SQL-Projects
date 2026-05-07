@@ -174,13 +174,13 @@ select * from VehicleMasterDetails;
 -- Problem 2: Get all vehicles made between 1950 and 2000
 
 select * from VehicleDetails
-where Year between 1950 and 2000
+where Year between 1950 and 2000;
 
 
 --Problem 3 : Get number vehicles made between 1950 and 2000
 
 select count(*) as VehiclesCount from VehicleDetails
-where year between 1950 and 2000
+where year between 1950 and 2000;
 
 --Problem 4 : Get number vehicles made between 1950 and 2000 per make and order them by Number Of Vehicles Descending
 
@@ -188,4 +188,22 @@ select m.Make , count(*) as NumOfVehicles from Makes m
 inner join VehicleDetails vd on m.MakeID = vd.MakeID
 where year between 1950 and 2000
 group by m.Make
-order by NumOfVehicles DESC
+order by NumOfVehicles DESC;
+
+--Problem 5 : Get All Makes that have manufactured more than 12000 Vehicles in years 1950 to 2000
+
+select m.Make, count(*) as NumOfVehicles from Makes m
+inner join VehicleDetails vd on vd.MakeID = m.MakeID
+where  year between 1950 and 2000
+group by m.Make
+having count(*) > 12000 ;
+
+--Without Having
+select * from 
+(
+	select m.Make, count(*) as NumOfVehicles from Makes m
+	inner join VehicleDetails vd on vd.MakeID = m.MakeID
+	where  year between 1950 and 2000
+	group by m.Make
+)R1
+where R1.NumOfVehicles > 12000;
