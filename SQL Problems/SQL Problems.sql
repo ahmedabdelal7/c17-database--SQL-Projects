@@ -181,3 +181,11 @@ where Year between 1950 and 2000
 
 select count(*) as VehiclesCount from VehicleDetails
 where year between 1950 and 2000
+
+--Problem 4 : Get number vehicles made between 1950 and 2000 per make and order them by Number Of Vehicles Descending
+
+select m.Make , count(*) as NumOfVehicles from Makes m 
+inner join VehicleDetails vd on m.MakeID = vd.MakeID
+where year between 1950 and 2000
+group by m.Make
+order by NumOfVehicles DESC
