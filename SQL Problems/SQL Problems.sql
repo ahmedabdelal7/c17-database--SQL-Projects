@@ -13,6 +13,7 @@ from disk = 'E:\Course-17\SQL Problems\car-database\VehicleMakesDB.bak';
 use VehicleMakesDB
 EXEC sp_changedbowner 'sa';
 
+
 --------------------------------------------------------------
 --	Exersieses From ChatGPT Easy to Hard
 --------------------------------------------------------------
@@ -131,12 +132,46 @@ order by NumOfModels DESC
 --Display each make with the number of vehicles, average Engine_CC,newest manufacturing year,
 --and only include makes having more than 500 vehicles, sorted by vehicle count descending.
 
---Make-Count(Vehicles)-avg(Engine_CC)-Year
-
 select Make , Count(ID) as NumberOfVehicles, Avg(Engine_CC) AvgEngine_CC, Max(Year) as NewestYear
 from Makes m join VehicleDetails vd
 on m.MakeID = vd.MakeID
 group by m.Make
 having Count(ID) > 500
 order by NumberOfVehicles DESC
+
+--------------------------------------------------------------
+--	SQL Problems PA
+--------------------------------------------------------------
+
+-- Problem 1: Create Master View
+create view VehicleMasterDetails as
+select 
+	ID,
+	m.MakeID, Make,
+	mm.ModelID,  ModelName,
+	sm.SubModelID, SubModelName,
+	b.BodyID, BodyName,
+	Vehicle_Display_Name, Year,
+	dt.DriveTypeID, DriveTypeName,
+	Engine,Engine_CC,Engine_Liter_Display,Engine_Cylinders,
+	ft.FuelTypeID, FuelTypeName,
+	NumDoors
+from VehicleDetails vd left join Makes m
+on vd.MakeID = m.MakeID
+inner join  MakeModels mm
+on vd.ModelID = mm.ModelID
+inner join SubModels sm
+on vd.SubModelID = sm.SubModelID
+inner join Bodies b
+on vd.BodyID = b.BodyID
+inner join DriveTypes dt
+on vd.DriveTypeID = dt.DriveTypeID
+inner join FuelTypes ft
+on vd.FuelTypeID = ft.FuelTypeID;
+
+select * from VehicleMasterDetails;
+
+-- Problem 2: Get all vehicles made between 1950 and 2000
+
+
 
