@@ -600,32 +600,12 @@ where m.Make = N'Ford'
 group by m.Make
 
 
+--Problem 45: Get Number of Models Per Make
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+select m.Make, count(*) NumOfModels
+from Makes m inner join MakeModels mm on m.MakeID = mm.MakeID
+group by m.Make
+order by NumOfModels DESC
 
 
 
