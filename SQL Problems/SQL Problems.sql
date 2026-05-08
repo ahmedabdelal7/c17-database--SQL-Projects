@@ -608,6 +608,16 @@ group by m.Make
 order by NumOfModels DESC
 
 
+--Problem 46: Get the highest 3 manufacturers that make the highest number of models
+
+select top 3 m.Make, count(*) NumOfModels
+from Makes m inner join MakeModels mm on m.MakeID = mm.MakeID
+group by m.Make
+order by NumOfModels DESC
+
+
+
+
 
 
 
