@@ -485,8 +485,13 @@ where Engine_CC = (select Max(Engine_CC) from VehicleDetails)
 select * from VehicleDetails
 where Engine_CC < (select Avg(Engine_CC) from VehicleDetails)
 
+--Problem 37: Get total vehicles that have Engin_CC above average
 
-
+select count(*) NumberOfVehiclesAboveAverageEngineCC  from 
+(
+	select * from VehicleDetails
+	where Engine_CC > (select Avg(Engine_CC) from VehicleDetails)
+)R1
 
 
 
