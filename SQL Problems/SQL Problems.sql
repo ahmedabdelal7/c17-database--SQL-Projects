@@ -268,3 +268,38 @@ select count(*) as TotalMakesRunOnGas from
 	where FuelTypeName = N'GAS'
 )R1
 
+
+--Problem 12: Count Vehicles by make and order them by NumberOfVehicles from high to low.
+
+select Makes.Make, NumOfVehicles = count(*)
+from VehicleDetails inner join Makes on VehicleDetails.MakeID = Makes.MakeID
+group by Makes.Make
+order by NumOfVehicles DESC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
