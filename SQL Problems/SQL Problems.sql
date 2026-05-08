@@ -288,6 +288,10 @@ order by NumOfVehicles DESC
 select Makes.Make from Makes
 where Make Like 'B%'
 
+--Problem 15: Get all Makes with make ends with 'W
+
+select Makes.Make from Makes
+where Make Like '%W'
 
 
 
