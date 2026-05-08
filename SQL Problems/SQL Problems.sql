@@ -460,15 +460,13 @@ from VehicleDetails
 )R1
 where R1.Age between 15 and 25
 
+--Problem 33: Get Minimum Engine CC , Maximum Engine CC , and Average Engine CC of all Vehicles
 
-
-
-
-
-
-
-
-
+select 
+	Min(Engine_CC) as MinimumEnging_CC,
+	Max(Engine_CC) as MaximumEnging_CC,
+	Avg(Engine_CC) as AverageEnging_CC
+from VehicleDetails
 
 
 
