@@ -355,10 +355,15 @@ select count(*) TotalWithNoSpecifiedDoors  from VehicleDetails
 where NumDoors is NULL; 
 
 
+--Problem 22: Get percentage of vehicles that has no doors specified
 
+select 
+(
+	Cast((select count(*) TotalWithNoSpecifiedDoors  from VehicleDetails where NumDoors is NULL) as float)
+	/
+	Cast((select count(*) from VehicleDetails as TotalVehicles )as float)
 
-
-
+) as PercOfNoSpecifiedDoors
 
 
 
