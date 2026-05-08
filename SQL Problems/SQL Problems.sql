@@ -285,15 +285,20 @@ order by NumOfVehicles DESC
 
 --Problem 14: Get all Makes with make starts with 'B'
 
-select Makes.Make from Makes
+select Make from Makes
 where Make Like 'B%'
 
 --Problem 15: Get all Makes with make ends with 'W
 
-select Makes.Make from Makes
+select Make from Makes
 where Make Like '%W'
 
+--Problem 16: Get all Makes that manufactures DriveTypeName = FWD
 
+select distinct Makes.Make , DriveTypes.DriveTypeName 
+from VehicleDetails inner join Makes on VehicleDetails.MakeID = Makes.MakeID
+inner join DriveTypes on VehicleDetails.DriveTypeID = DriveTypes.DriveTypeID
+where  DriveTypes.DriveTypeName = N'FWD' 
 
 
 
