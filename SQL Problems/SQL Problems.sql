@@ -616,6 +616,18 @@ group by m.Make
 order by NumOfModels DESC
 
 
+--Problem 47: Get the highest number of models manufactured
+
+select Max(NumOfModels) as MaximunNumberOfModels from 
+(
+	select  count(*) NumOfModels
+	from Makes m inner join MakeModels mm on m.MakeID = mm.MakeID
+	group by m.Make
+)R1
+
+select top 1 count(*) MaximunNumOfModels from MakeModels
+group by MakeModels.MakeID
+order by MaximunNumOfModels desc
 
 
 
