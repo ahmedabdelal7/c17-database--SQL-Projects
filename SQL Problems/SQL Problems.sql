@@ -586,11 +586,18 @@ GROUP BY Makes.MakeID, Makes.Make
 ORDER BY Makes.MakeID ASC
 
 
+--Problem 44: Get Total Number Of Doors Manufactured by 'Ford'
+
+select sum( vd.NumDoors) As [Total Number Of Doors], m.Make
+from VehicleDetails vd inner join Makes m on vd.MakeID = m.MakeID
+group by m.Make
+having m.Make = N'Ford'
 
 
-
-
-
+select sum( vd.NumDoors) As [Total Number Of Doors], m.Make
+from VehicleDetails vd inner join Makes m on vd.MakeID = m.MakeID
+where m.Make = N'Ford'
+group by m.Make
 
 
 
