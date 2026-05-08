@@ -324,7 +324,13 @@ inner join DriveTypes on VehicleDetails.DriveTypeID = DriveTypes.DriveTypeID
 where  DriveTypes.DriveTypeName = N'FWD' 
 
 
+--Problem 18: Get total vehicles per DriveTypeName Per Make and order them per make asc then per total Desc
 
+select m.Make, dt.DriveTypeName, count(*) as TotalVehicles
+from DriveTypes dt inner join VehicleDetails vd on dt.DriveTypeID = vd.DriveTypeID 
+inner join Makes m on vd.MakeID = m.MakeID
+group by m.Make, dt.DriveTypeName
+order by m.Make, TotalVehicles DESC;
 
 
 
