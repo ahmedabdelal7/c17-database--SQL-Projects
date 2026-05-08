@@ -423,7 +423,26 @@ exists(
 )
 
 
+--Problem 30: Get all Vehicle_Display_Name, NumDoors and add extra column to describe number of doors by words,
+--and if door is null display 'Not Set'
 
+select Vehicle_Display_Name, NumDoors, 
+	Case
+		when NumDoors = 1 then 'One Door'
+		when NumDoors = 2 then 'Tow Doors'
+		when NumDoors = 3 then 'Three Doors'
+		when NumDoors = 4 then 'Four Doors'
+		when NumDoors = 5 then 'Five Doors'
+		when NumDoors = 6 then 'Six Doors'
+		when NumDoors = 8 then 'Eight Doors'
+		Else 'NotSet'
+	End as DoorsDescription
+from VehicleDetails;
+
+
+select distinct NumDoors
+from VehicleDetails
+order by NumDoors ;
 
 
 
