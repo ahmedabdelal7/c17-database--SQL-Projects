@@ -366,11 +366,12 @@ select
 ) as PercOfNoSpecifiedDoors
 
 
+--Problem 23: Get MakeID , Make, SubModelName for all vehicles that have SubModelName 'Elite'
 
-
-
-
-
+select distinct VehicleDetails.MakeID, Makes.Make, SubModels.SubModelName 
+from  VehicleDetails inner join Makes on Makes.MakeID = VehicleDetails.MakeID
+inner join SubModels on VehicleDetails.SubModelID = SubModels.SubModelID
+where SubModelName ='Elite'
 
 
 
