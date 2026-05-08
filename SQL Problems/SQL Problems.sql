@@ -235,5 +235,13 @@ select *, CAST(R1.NumOfVehicles as float )/ CAST( R1.TotalVehicles as float ) as
 order by NumOfVehicles DESC
 
 
+--Problem 8: Get Make, FuelTypeName and Number of Vehicles per FuelType per Make
 
+SELECT Make, FuelTypeName, count(*) as TotalVehicles
+FROM     VehicleDetails INNER JOIN
+                  FuelTypes ON VehicleDetails.FuelTypeID = FuelTypes.FuelTypeID INNER JOIN
+                  Makes ON VehicleDetails.MakeID = Makes.MakeID
+
+group by Make, FuelTypeName
+order by Make
 
