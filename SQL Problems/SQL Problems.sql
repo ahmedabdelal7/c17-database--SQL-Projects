@@ -268,6 +268,12 @@ select count(*) as TotalMakesRunOnGas from
 	where FuelTypeName = N'GAS'
 )R1
 
+-- Method-2
+select count(distinct Makes.Make)  TotalMakesRunOnGas
+	from VehicleDetails inner join Makes on VehicleDetails.MakeID = Makes.MakeID
+	inner join FuelTypes on VehicleDetails.FuelTypeID = FuelTypes.FuelTypeID
+	where FuelTypeName = N'GAS'
+
 
 --Problem 12: Count Vehicles by make and order them by NumberOfVehicles from high to low.
 
@@ -300,14 +306,22 @@ from VehicleDetails inner join Makes on VehicleDetails.MakeID = Makes.MakeID
 inner join DriveTypes on VehicleDetails.DriveTypeID = DriveTypes.DriveTypeID
 where  DriveTypes.DriveTypeName = N'FWD' 
 
+--Problem 17: Get total Makes that Mantufactures DriveTypeName=FWD
 
+select count(*) as MakeWithFWD from 
+(
+	select distinct Makes.Make , DriveTypes.DriveTypeName 
+	from VehicleDetails inner join Makes on VehicleDetails.MakeID = Makes.MakeID
+	inner join DriveTypes on VehicleDetails.DriveTypeID = DriveTypes.DriveTypeID
+	where  DriveTypes.DriveTypeName = N'FWD' 
+)R1
 
+-- Method-2
 
-
-
-
-
-
+select count(distinct Make) as MakeWithFWD  
+from VehicleDetails inner join Makes on VehicleDetails.MakeID = Makes.MakeID
+inner join DriveTypes on VehicleDetails.DriveTypeID = DriveTypes.DriveTypeID
+where  DriveTypes.DriveTypeName = N'FWD' 
 
 
 
