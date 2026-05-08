@@ -406,6 +406,22 @@ where Bodies.BodyName IN ('Coupe','Hatchback','Sedan')
 	AND Year IN (2008,2020,2021)
 
 
+--Problem 29: Return found=1 if there is any vehicle made in year 1950
+
+select found=
+CASE
+when exists(select * from VehicleDetails where year = 1950)  then 1
+ELSE 0
+END
+
+
+--Doctor Method
+select found = 1
+where 
+exists(
+		select * from VehicleDetails where year = 1950
+)
+
 
 
 
