@@ -735,7 +735,11 @@ select Emp.Name, Emp.EmployeeID, Emp.Salary ,   ManagerName =
 from Employees Emp left join Employees Mgr on Emp.ManagerID = Mgr.EmployeeID
 
 
+-- Problem 54: Get All Employees managed by 'Mohammed'
 
+select Employees.EmployeeID, Employees.Name, Employees.Salary, ManagerName = Managers.Name
+from Employees Employees join Employees Managers on Employees.ManagerID = Managers.EmployeeID
+where Managers.Name = 'Mohammed'
 
 
 
