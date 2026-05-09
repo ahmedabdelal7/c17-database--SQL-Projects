@@ -724,6 +724,16 @@ select Employees.Name, Employees.EmployeeID, Employees.Salary , Managers.Name as
 from Employees Left join Employees Managers on  Employees.ManagerID = Managers.EmployeeID
 
 
+--Problem 53: Get all employees that have manager or does not have manager along with Manager's name, 
+--incase no manager name the same employee name as manager to himself
+
+select Emp.Name, Emp.EmployeeID, Emp.Salary ,   ManagerName = 
+	case
+		when Mgr.Name is null then Emp.Name
+		else Mgr.Name
+	end
+from Employees Emp left join Employees Mgr on Emp.ManagerID = Mgr.EmployeeID
+
 
 
 
